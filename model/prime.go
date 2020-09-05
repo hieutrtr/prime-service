@@ -5,5 +5,5 @@ type Prime struct {
 }
 
 type Input struct {
-	Number uint32 `json:"number" validate:"required,numeric"`
+	Number uint32 `json:"number" validate:"required"`
 }
