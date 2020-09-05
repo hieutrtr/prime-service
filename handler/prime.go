@@ -27,6 +27,17 @@ func traceBackHighestPrime(inputNumber uint32, marks []uint32) uint32 {
 	return prime
 }
 
+// HighestPrime godoc
+// @Summary Get highest prime
+// @Description get highest prime which is less than a given number
+// @Tags prime
+// @Accept  json
+// @Produce  json
+// @Param input body model.Input true "Input Number"
+// @Param Authorization header string true "Bearer token (JWT)"
+// @Success 200 {object} model.Prime
+// @Success 400 {object} model.Error
+// @Router /prime [post]
 func (h *Handler) HighestPrime(c echo.Context) (err error) {
 	user := c.Get("user")
 	if user != AuthorizedUser {

@@ -1,0 +1,69 @@
+basePath: /api/v1
+definitions:
+  model.Error:
+    properties:
+      message:
+        type: object
+    type: object
+  model.Input:
+    properties:
+      number:
+        example: 500000
+        type: integer
+    required:
+    - number
+    type: object
+  model.Prime:
+    properties:
+      highest_prime:
+        type: integer
+    type: object
+host: 34.126.71.65
+info:
+  contact:
+    email: hieutrantrung.it@gmail.com
+    name: Hieu TRAN
+  description: A service for finding nearest prime less than a given number N.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Prime API
+  version: "1.0"
+paths:
+  /prime:
+    post:
+      consumes:
+      - application/json
+      description: get highest prime which is less than a given number
+      parameters:
+      - description: Input Number
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/model.Input'
+      - description: Bearer token (JWT)
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Prime'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/model.Error'
+      summary: Get highest prime
+      tags:
+      - prime
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

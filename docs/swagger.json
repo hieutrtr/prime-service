@@ -1,0 +1,104 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "A service for finding nearest prime less than a given number N.",
+        "title": "Prime API",
+        "contact": {
+            "name": "Hieu TRAN",
+            "email": "hieutrantrung.it@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "34.126.71.65",
+    "basePath": "/api/v1",
+    "paths": {
+        "/prime": {
+            "post": {
+                "description": "get highest prime which is less than a given number",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "prime"
+                ],
+                "summary": "Get highest prime",
+                "parameters": [
+                    {
+                        "description": "Input Number",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.Input"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bearer token (JWT)",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Prime"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/model.Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "model.Error": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "object"
+                }
+            }
+        },
+        "model.Input": {
+            "type": "object",
+            "required": [
+                "number"
+            ],
+            "properties": {
+                "number": {
+                    "type": "integer",
+                    "example": 500000
+                }
+            }
+        },
+        "model.Prime": {
+            "type": "object",
+            "properties": {
+                "highest_prime": {
+                    "type": "integer"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "ApiKeyAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}
