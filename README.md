@@ -14,6 +14,11 @@ So I initialize a kind of cache layer to support multiple requests and reduce du
 ## Features overview
 * Get the nearest prime less than or equal to number N input
 
+## Quick Start
+Use docker to start service on you local:
+
+`docker run -d --name prime-service -p 8080:8080 hieutrtr/prime-service:latest`
+
 ## Installation
 You need go installed and `GOBIN` in your `PATH`
 
@@ -26,7 +31,14 @@ options
 -limit-prime (default: 1000000) : Input that greater than limit-prime will not be supported. This configuration is also for the service to know how many prime numbers need to be generated in cache storage.
 ```
 
-## Deployment
+## Build and Deployment
+Clone project:
+`git clone https://github.com/hieutrtr/prime-service.git`
+
+Run test
+
+`go test ./...`
+
 Build docker image:
 
 `docker build -t <repo>/<image>:<version> .`
