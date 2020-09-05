@@ -16,5 +16,6 @@ func New() *echo.Echo {
 		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept, echo.HeaderAuthorization},
 		AllowMethods: []string{ echo.POST , echo.GET },
 	}))
+	e.Validator = NewValidator()
 	return e
 }
