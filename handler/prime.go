@@ -6,6 +6,8 @@ import (
 	"github.com/hieutrtr/prime-service/model"
 )
 var (
+	AuthorizedUser = "stably"
+	ErrUserUnauthorized = echo.NewHTTPError(http.StatusUnauthorized, "User is unauthorized")
 	ErrPrimeNotFound = echo.NewHTTPError(http.StatusBadRequest, "There's no prime less than 2")
 )
 
@@ -26,6 +28,10 @@ func traceBackHighestPrime(inputNumber uint32, marks []uint32) uint32 {
 }
 
 func (h *Handler) HighestPrime(c echo.Context) (err error) {
+	user := c.Get("user")
+	if user != AuthorizedUser {
+		return c.JSON(http.StatusBadRequest, ErrUserUnauthorized)
+	}
 	input := new(model.Input)
 	if err = c.Bind(input); err != nil {
 		return c.JSON(http.StatusBadRequest, echo.NewHTTPError(http.StatusBadRequest, err.Error()))

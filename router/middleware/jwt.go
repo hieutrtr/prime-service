@@ -6,7 +6,7 @@ import (
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo/v4"
-	"go_exec_api/utils"
+	"github.com/hieutrtr/prime-service/utils"
 )
 
 type (
