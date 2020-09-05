@@ -1,4 +1,4 @@
-module github/hieutrtr/prime-service
+module github.com/hieutrtr/prime-service
 
 go 1.15
 
