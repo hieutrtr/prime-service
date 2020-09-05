@@ -5,6 +5,9 @@ import (
 	"net/http"
 	"prime-service/model"
 )
+var (
+	ErrPrimeNotFound = echo.NewHTTPError(http.StatusBadRequest, "There's no prime less than 2")
+)
 
 func traceBackHighestPrime(inputNumber uint32, marks []uint32) uint32 {
 	halfInput := inputNumber/2-1
@@ -32,6 +35,14 @@ func (h *Handler) HighestPrime(c echo.Context) (err error) {
 	}
 	if input.Number > h.primeCache.Limit {
 		return c.JSON(http.StatusBadRequest, echo.NewHTTPError(http.StatusBadRequest, "The input is over limitation"))
+	}
+	if input.Number <= 2 {
+		return c.JSON(http.StatusBadRequest, ErrPrimeNotFound)
+	}
+	if input.Number <= 3 {
+		return c.JSON(http.StatusOK, model.Prime{
+			HighestPrime: 2,
+		})
 	}
 	prime := traceBackHighestPrime(input.Number, h.primeCache.Marks)
 	result := model.Prime{
