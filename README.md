@@ -17,7 +17,7 @@ So I initialize a kind of cache layer to support multiple requests and reduce du
 ## Installation
 You need go installed and `GOBIN` in your `PATH`
 
-install `go get github.com/hieutrtr/prime-service/v1`
+install `go install github.com/hieutrtr/prime-service`
 
 start service `prime-service start --limit-prime <prime limit number>`
 
