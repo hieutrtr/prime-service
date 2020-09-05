@@ -2,10 +2,10 @@ package main
 
 import(
 	"flag"
-	"github/hieutrtr/prime-service/handler"
-	"github/hieutrtr/prime-service/router"
+	"github.com/hieutrtr/prime-service/handler"
+	"github.com/hieutrtr/prime-service/router"
 	echoSwagger "github.com/swaggo/echo-swagger" // echo-swagger middleware
-	"github/hieutrtr/prime-service/store"
+	"github.com/hieutrtr/prime-service/store"
 )
 
 func main() {
