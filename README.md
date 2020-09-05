@@ -43,6 +43,13 @@ Please keep the secret on your laptop to use for next time.
 - Click "Execute"
 ```
 
+## Attack me
+```
+- Install vegeta: go get -u github.com/tsenart/vegeta
+- Modify: attack/prime_endpoint to put JWT token.
+- Run: cat attack/prime_endpoint | vegeta attack -duration=10s -rate=4000 -body attack/body.json | tee results.bin | vegeta report
+```
+
 ## Supported versions
 
 * Go version 1.15

@@ -1,0 +1,3 @@
+POST http://34.126.71.65/api/v1/prime
+Content-Type: application/json
+Authorization: Bearer <place generated JWT>
