@@ -43,6 +43,16 @@ Please keep the secret on your laptop to use for next time.
 - Click "Execute"
 ```
 
+* Or Try via curl with default JWT
+```
+curl --location --request POST '34.126.71.65/api/v1/prime' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdGFibHkifQ.EbW4_ASIThuZkJyRUrrO6eFjymeisdcO3L2r0CS2LLM' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "number": 100000
+}'
+```
+
 ## Attack me
 ```
 - Install vegeta: go get -u github.com/tsenart/vegeta
@@ -63,6 +73,16 @@ Use docker to start service on you local:
 
 `docker run -d --name prime-service -p 8080:8080 hieutrtr/prime-service:latest`
 
+Call API via curl with default JWT:
+```
+curl --location --request POST 'localhost:8080/api/v1/prime' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdGFibHkifQ.EbW4_ASIThuZkJyRUrrO6eFjymeisdcO3L2r0CS2LLM' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "number": 100000
+}'
+```
+
 ## Installation
 You need go installed and `GOBIN` in your `PATH`
 
@@ -73,6 +93,7 @@ start service `prime-service start --limit-prime <prime limit number>`
 options
 ```
 -limit-prime (default: 1000000) : Input that greater than limit-prime will not be supported. This configuration is also for the service to know how many prime numbers need to be generated in cache storage.
+-jwt-secret (default: SECRET) : secret key to generate JWT using HMAC algorithm.
 ```
 
 ## Build and Deployment
