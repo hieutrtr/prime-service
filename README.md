@@ -6,6 +6,43 @@ Finding the highest prime number lower than input number N is a very simple assi
 we should care about support multiple requests which leading to have duplicated calculation of prime number.
 So I initialize a kind of cache layer to support multiple requests and reduce duplicated calculation cost.
 
+## Thought you wanna try first !
+
+* Get secret
+```
+visit: https://onetimesecret.com/secret/n50wn0kid8izr6yekm12ogedahzzhgs
+type passphase: WHTMJmhKXQ
+```
+Please keep the secret on your laptop to use for next time.
+
+* Generate JWT
+```
+- Visit: http://jwt.io
+
+- Use payload:
+    {
+      "iss": "stably",
+      "exp": 1599185100 
+    }
+// please use exp as current timestamp + 1 min
+
+- Place secret in "VERIFY SIGNATURE"
+- Copy the JWT from the left box
+```
+
+* Try API via swagger
+```
+- Visit: http://34.126.71.65/swagger/index.html
+- Click on the "POST /prime" endpoint.
+- Click "Try it out"
+- Try with input :
+{
+  "number": 500000
+}
+- Authorization : Bearer <place generated JWT>
+- Click "Execute"
+```
+
 ## Supported versions
 
 * Go version 1.15
