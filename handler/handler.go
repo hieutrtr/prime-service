@@ -1,6 +1,6 @@
 package handler
 
-import "prime-service/store"
+import "github/hieutrtr/prime-service/store"
 
 type Handler struct {
 	primeCache *store.PrimeCache

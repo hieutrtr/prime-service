@@ -3,7 +3,7 @@ package handler
 import (
 	"github.com/labstack/echo/v4"
 	"net/http"
-	"prime-service/model"
+	"github/hieutrtr/prime-service/model"
 )
 var (
 	ErrPrimeNotFound = echo.NewHTTPError(http.StatusBadRequest, "There's no prime less than 2")
