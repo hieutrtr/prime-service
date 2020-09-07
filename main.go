@@ -1,6 +1,7 @@
 package main
 
 import(
+	"fmt"
 	"flag"
 	"github.com/hieutrtr/prime-service/handler"
 	"github.com/hieutrtr/prime-service/router"
@@ -28,6 +29,7 @@ import(
 func main() {
 	limitPrime := flag.Int64("limit-prime", 1000000, "limit of highest prime")
 	JWTSecret := flag.String("jwt-secret", "SECRET", "secret to generate JWT")
+	flag.Parse()
 	primeCache := store.NewPrimeCache(uint32(*limitPrime))
 	r := router.New()
 	r.GET("/swagger/*", echoSwagger.WrapHandler)
